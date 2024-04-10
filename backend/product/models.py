@@ -1,11 +1,13 @@
 from django.db import models
+from mptt.models import MPTTModel, TreeForeignKey
 from django.urls import reverse
 
 from account.models import User
 from .managers import ProductManager
 
-class Category(models.Model):
+class Category(MPTTModel):
      cover			= models.ImageField(upload_to="category/cover/",default="category.png")
+     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
      title 			= models.CharField(max_length=700)
      timestamp 		= models.DateTimeField(auto_now_add=True)
      updated 		= models.DateTimeField(auto_now=True)
@@ -13,6 +15,9 @@ class Category(models.Model):
 
      def __str__(self) -> str:
           return f'{self.title}'
+     
+     class MPTTMeta:
+        order_insertion_by = ['title']
 
      def get_absolute_url(self): 
           return reverse('product:category-details', args=[self.slug])
