@@ -205,9 +205,11 @@
                                     <a href="{{p.toggle_favourite}}" class="heart-icon "><i class="fa fa-heart"></i></a>
                                     {% endif %}
                                 </li>
+                                
                                 <li><a href="{{r.add_to_cart}}"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
+                       
                         <div class="product__item__text">
                             <h6><a href="{{r.get_absolute_url}}">{{r.name}}</a></h6>
                             <h5>${{r.price}}</h5>

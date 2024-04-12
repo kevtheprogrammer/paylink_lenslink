@@ -30,6 +30,7 @@
         <div class="container">
             <div class="row">
                  <div class="col-lg-3 col-md-5">
+                  
                     <div class="sidebar">
                         <div class="sidebar__item">
                             <h4>Categories</h4>
@@ -122,6 +123,7 @@
                                 </label>
                             </div>
                         </div> -->
+                   
                         <div class="sidebar__item">
                             <div class="latest-product__text">
                                 <h4>Latest Products</h4>
@@ -161,9 +163,9 @@
                 <div class="col-lg-9 col-md-7">
                     <div class="product__discount">
                         <div class="section-title product__discount__title">
-                            <h2>Sale Off</h2>
+                            <h3>Sale Off</h3>
                         </div>
-                        <div  class="row">
+                        <div  class="row py-0">
                             <div class="product__discount__slider owl-carousel">
                                {% for p in product_discount %}
                                 <div class="col-lg-4">
@@ -176,10 +178,10 @@
                                                     {% if user in p.favourite.all %}
                                                     <a href="{{p.toggle_favourite}}" class="heart-icon"><i class="fa fa-heart text-danger"></i></a>
                                                     {% else %}
-                                                    <a href="{{p.toggle_favourite}}" class="heart-icon "><i class="fa fa-heart"></i></a>
+                                                    <a href="{{p.toggle_favourite}}" class="heart-icon "><i id="cat-icons" class="fa fa-heart"></i></a>
                                                     {% endif %}
                                                 </li>
-                                                <li><a href="{{p.add_to_cart}}"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="{{p.add_to_cart}}"><i class="fa fa-shopping-cart cat-icons"></i></a></li>
                                             </ul>
                                         </div>
 

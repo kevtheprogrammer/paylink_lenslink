@@ -3473,3 +3473,6 @@ ol {
 		font-size: 24px;
 	}
 }
+#cat-icons:hover{
+	background-color: #800203;
+}
