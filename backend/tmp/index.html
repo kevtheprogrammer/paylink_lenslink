@@ -1,206 +1,320 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block title %} Phil Optician |
+Home {% endblock %} {% block content %} {% include 'hero.html' %}
 
-{% block title %}
-    PJMS
-{% endblock %}
-
-{% block content %}
-    
-    {% include 'hero.html' %}
-    
-    <!-- Categories Section Begin -->
-    <section class="categories">
-        <div class="container">
-            <div class="row">
-                <div class="categories__slider owl-carousel">
-                    {% for c in category %}
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="{{c.cover.url}}">
-                            <h5><a href="#">{{c.title}}</a></h5>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-            </div>
+<!-- Categories Section Begin -->
+<section class="categories">
+  <div class="container">
+    <div class="row">
+      <div class="categories__slider owl-carousel">
+        {% for c in category %}
+        <div class="col-lg-3">
+          <div
+            style="max-width: 100%; height: 109px"
+            ;
+            class="categories__item set-bg"
+            data-setbg="{{c.cover.url}}"
+          ></div>
+          <h5 class="py-4"><a href="#" class="text-dark">{{c.title}}</a></h5>
         </div>
-    </section>
-    <!-- Categories Section End -->
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Categories Section End -->
 
-    <!-- Featured Section Begin -->
-    <section class="featured spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h2>Featured Product</h2>
-                    </div>
-                    <div class="featured__controls">
-                        <ul>
+<!-- Featured Section Begin -->
+<section class="featured spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="section-title">
+          <h2>Trending Products</h2>
+
+          <div
+            id="carouselExampleIndicators"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="1"
+              ></li>
+              <li
+                data-target="#carouselExampleIndicators"
+                data-slide-to="2"
+              ></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img
+                style="max-width: 100%; height: auto"
+                ;
+                src="{% static 'img/banner/home-baner-1.png' %}"
+                alt=""/>
+              />
+
+                 <img
+                    style="max-width: 100%; height: auto"
+                    ;
+                    src="{% static 'img/banner/home_banner_2.gif'%}"
+                    alt=""
+                  />
+              </div>
+              <div class="carousel-item">
+                <div class="carousel-item">
+                 
+    
+              </div>
+             
+              </div>
+            </div>
+            <a
+              class="carousel-control-prev"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a
+              class="carousel-control-next"
+              href="#carouselExampleIndicators"
+              role="button"
+              data-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+        <div class="featured__controls">
+          <!--  <ul>
                             <li class="active" data-filter="*">All</li>
                             {% for t in tags %}
                             <li data-filter=".{{t.title}}">{{t.title}}</li>
                             {% endfor  %}
                            
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row featured__filter">
-                {% for obj in object_list %}
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges {% for t in obj.tags.all %} {{t.title}} {% endfor %}">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="{{obj.thumb.url}}">
-                            <ul class="featured__item__pic__hover">
-                                <li>
-                                    {% if user in obj.favourite.all %}
-                                    <a href="{{p.toggle_favourite}}" class="heart-icon"><i class="fa fa-heart text-danger"></i></a>
-                                    {% else %}
-                                    <a href="{{p.toggle_favourite}}" class="heart-icon "><i class="fa fa-heart"></i></a>
-                                    {% endif %}
-                                </li>
-                                <li><a href="{{obj.add_to_cart}}"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="{{obj.get_absolute_url}}">{{obj.name}}</a></h6>
-                            <h5>${{obj.price}}</h5>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    <!-- Featured Section End -->
+                        </ul> -->
 
-    <!-- Banner Begin -->
-    <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="{% static 'img/banner/banner-1.jpg' %}" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="{% static 'img/banner/banner-2.jpg' %}" alt="">
-                    </div>
-                </div>
-            </div>
+          {% load mptt_tags %}
+          <ul>
+            {% recursetree category %}
+            <li>
+              {{ node.title }} {% if not node.is_leaf_node %}
+              <ul class="children">
+                <li>{{ children }}</li>
+              </ul>
+              {% endif %}
+            </li>
+            {% endrecursetree %}
+          </ul>
+          {% endblock %}
         </div>
+      </div>
     </div>
-    <!-- Banner End -->
-
-    <!-- Latest Product Section Begin -->
-    <section class="latest-product spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>Latest Products</h4>
-                        <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                {% for obj in object_list_3 %}
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="{{obj.thumb.url}}" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>{{obj.name}}</h6>
-                                        <span>${{obj.price}}</span>
-                                    </div>
-                                </a>
-                                {% endfor  %}
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                {% for obj in object_list_3 %}
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="{{obj.thumb.url}}" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>{{obj.name}}</h6>
-                                        <span>${{obj.price}}</span>
-                                    </div>
-                                </a>
-                                {% endfor  %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>Top Rated Products</h4>
-                        <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                {% for obj in object_list_3 %}
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="{{obj.thumb.url}}" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>{{obj.name}}</h6>
-                                        <span>${{obj.price}}</span>
-                                    </div>
-                                </a>
-                                {% endfor  %}
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                {% for obj in object_list_3 %}
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="{{obj.thumb.url}}" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>{{obj.name}}</h6>
-                                        <span>${{obj.price}}</span>
-                                    </div>
-                                </a>
-                                {% endfor  %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>Review Products</h4>
-                        <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                {% for obj in object_list_3 %}
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="{{obj.thumb.url}}" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>{{obj.name}}</h6>
-                                        <span>${{obj.price}}</span>
-                                    </div>
-                                </a>
-                                {% endfor  %}
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                {% for obj in object_list_3 %}
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="{{obj.thumb.url}}" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>{{obj.name}}</h6>
-                                        <span>${{obj.price}}</span>
-                                    </div>
-                                </a>
-                                {% endfor  %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row featured__filter">
+      {% for obj in object_list %}
+      <div
+        class="col-lg-3 col-md-4 col-sm-6 mix oranges {% for t in obj.tags.all %} {{t.title}} {% endfor %}"
+      >
+        <div class="featured__item">
+          <div
+            class="featured__item__pic set-bg"
+            data-setbg="{{obj.thumb.url}}"
+          >
+            <ul class="featured__item__pic__hover">
+              <li>
+                {% if user in obj.favourite.all %}
+                <a href="{{p.toggle_favourite}}" class="heart-icon"
+                  ><i class="fa fa-heart text-danger"></i
+                ></a>
+                {% else %}
+                <a href="{{p.toggle_favourite}}" class="heart-icon"
+                  ><i class="fa fa-heart"></i
+                ></a>
+                {% endif %}
+              </li>
+              <li>
+                <a href="{{obj.add_to_cart}}"
+                  ><i class="fa fa-shopping-cart"></i
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="featured__item__text">
+            <h6><a href="{{obj.get_absolute_url}}">{{obj.name}}</a></h6>
+            <h5>${{obj.price}}</h5>
+          </div>
         </div>
-    </section>
-    <!-- Latest Product Section End -->
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- Featured Section End -->
 
-    
+<!-- Banner Begin -->
+<div class="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="banner__pic">
+          <img
+            style="max-width: 100%; height: auto"
+            ;
+            src="{% static 'img/banner/banner-1.jpg' %}"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="banner__pic">
+          <img src="{% static 'img/banner/banner-2.jpg' %}" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Banner End -->
 
-    {% endblock %}
+<!-- Latest Product Section Begin -->
+<section class="latest-product spad">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="latest-product__text">
+          <h4>Latest Products</h4>
+          <div class="latest-product__slider owl-carousel">
+            <div class="latest-prdouct__slider__item">
+              {% for obj in object_list_3 %}
+              <a href="#" class="latest-product__item">
+                <div class="col-md-4 px-0 latest-product__item__pic">
+                  <img
+                    style="max-width: 100%; height: 109px"
+                    ;src="{{obj.thumb.url}}"
+                    alt=""
+                  />
+                </div>
+                <div class="latest-product__item__text">
+                  <h6>{{obj.name}}</h6>
+                  <span>${{obj.price}}</span>
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+            <div class="col-md-4 px-0 latest-prdouct__slider__item">
+              {% for obj in object_list_3 %}
+              <a href="#" class="latest-product__item">
+                <div class="latest-product__item__pic">
+                  <img
+                    style="max-width: 100%; height: auto"
+                    ;
+                    class="img-responsive"
+                    src="{{obj.thumb.url}}"
+                    alt=""
+                  />
+                </div>
+
+                <div class="latest-product__item__text">
+                  <h6>{{obj.name}}</h6>
+                  <span>${{obj.price}}</span>
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="latest-product__text">
+          <h4>Top Rated Products</h4>
+          <div class="latest-product__slider owl-carousel">
+            <div class="latest-prdouct__slider__item">
+              {% for obj in object_list_3 %}
+              <a href="#" class="latest-product__item">
+                <div class="latest-product__item__pic">
+                  <img
+                    style="max-width: 100%; height: 109px"
+                    ;
+                    src="{{obj.thumb.url}}"
+                  />
+                </div>
+                <div class="latest-product__item__text">
+                  <h6>{{obj.name}}</h6>
+                  <span>${{obj.price}}</span>
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+            <div class="latest-prdouct__slider__item">
+              {% for obj in object_list_3 %}
+              <a href="#" class="latest-product__item">
+                <div class="latest-product__item__pic">
+                  <img
+                    style="max-width: 100%; height: auto"
+                    src="{{obj.thumb.url}}"
+                    alt=""
+                  />
+                </div>
+                <div class="latest-product__item__text">
+                  <h6>{{obj.name}}</h6>
+                  <span>${{obj.price}}</span>
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="latest-product__text">
+          <h4>Review Products</h4>
+          <div class="latest-product__slider owl-carousel">
+            <div class="latest-prdouct__slider__item">
+              {% for obj in object_list_3 %}
+              <a href="#" class="latest-product__item">
+                <div class="latest-product__item__pic">
+                  <img src="{{obj.thumb.url}}" alt="" />
+                </div>
+                <div class="latest-product__item__text">
+                  <h6>{{obj.name}}</h6>
+                  <span>${{obj.price}}</span>
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+
+            <div class="latest-prdouct__slider__item">
+              {% for obj in object_list_3 %}
+              <a href="#" class="latest-product__item">
+                <div class="latest-product__item__pic">
+                  <img src="{{obj.thumb.url}}" alt="" />
+                </div>
+                <div class="latest-product__item__text">
+                  <h6>{{obj.name}}</h6>
+                  <span>${{obj.price}}</span>
+                </div>
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Latest Product Section End -->

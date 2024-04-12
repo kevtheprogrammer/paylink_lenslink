@@ -10,7 +10,7 @@
     <section class="breadcrumb-section set-bg" data-setbg="{{object.thumb.url}}">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <!-- <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <h2>{{object.name}}</h2>
                         <div class="breadcrumb__option">
@@ -19,7 +19,7 @@
                             <span>{{object.name}}</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -32,20 +32,20 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
+                            <img style="max-width: 100%; height: auto"; class="product__details__pic__item--large"
                                 src="{{object.thumb.url}}" alt="">
                         </div>
+
                         <div class="product__details__pic__slider owl-carousel">
                             {% if object.img1 %}
-                            <img data-imgbigurl="{{object.img1.url}}"
-                            src="{{object.img1.url}}" alt="">
+                            <img style="max-width: 100%; height: auto"; data-imgbigurl="{{object.img1.url}}" src="{{object.img1.url}}" alt="">
                             {% endif %}
                             {% if object.img2 %}
-                            <img data-imgbigurl="{{object.img2.url}}"
+                            <img style="max-width: 100%; height: auto"; data-imgbigurl="{{object.img2.url}}"
                             src="{{object.img2.url}}" alt="">
                             {% endif %}
                             {% if object.img3 %}
-                            <img data-imgbigurl="{{object.img3.url}}"
+                            <img style="max-width: 100%; height: auto"; data-imgbigurl="{{object.img3.url}}" 
                             src="{{object.img3.url}}" alt="">
                             {% endif %}
            
@@ -63,7 +63,7 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">${{object.price}}</div>
+                        <div class="product__details__price">K{{object.price}}</div>
                         <p>{{object.description}}</p>
                         <form action="/product/{{object.id}}/tropical-drinks/" method="post">
                             <div class="product__details__quantity">
@@ -74,7 +74,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button  type="submit" class="primary-btn">ADD TO CART</button>
+                            <button  style="background-color: #800203;" type="submit" class="primary-btn">ADD TO CART</button>
                         </form>
                         {% if is_favourite %}
                         <a href="{{object.toggle_favourite}}" class="heart-icon"><span class="icon_heart "></span></a>
@@ -84,7 +84,7 @@
                         <ul>
                             <li><b>Availability</b> <span>In Stock ({{object_stock}})</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                            <li><b>Weight</b> <span>0.5 kg</span></li>
+                            <li><b>Distance</b> <span>0.5m</span></li>
                             <li><b>Share on</b>
                                 <div class="share">
                                     <a href="#"><i class="fa fa-facebook"></i></a>

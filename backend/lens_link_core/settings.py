@@ -1,4 +1,5 @@
 from pathlib import Path
+from django.conf import global_settings
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,6 +76,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'lens_link_core.wsgi.application'
 
